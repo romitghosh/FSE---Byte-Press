@@ -1,4 +1,4 @@
-import user from "./user.js";
-import news from "./news.js";
+const user = require("./user.js");
+const news = require("./news.js");
 
-export { user, news };
+module.exports = { user, news };

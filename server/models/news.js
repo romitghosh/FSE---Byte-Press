@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const newsSchema = new mongoose.Schema({
   title: {
@@ -25,4 +25,4 @@ const newsSchema = new mongoose.Schema({
 
 const news = mongoose.model("news", newsSchema);
 
-export default news;
+module.exports = news;

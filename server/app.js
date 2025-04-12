@@ -2,18 +2,18 @@ require("dotenv").config();
 
 const express = require("express");
 const cors = require("cors");
-
-const newsRoutes = require("./routes/newsRoutes");
-const topHeadlinesRoutes = require("./routes/topHeadlinesRoutes");
-const countryRoutes = require("./routes/countryRoutes");
+const routes = require("./routes");
+const loginRoutes = require("./routes/loginRoutes");
+const registerRoutes = require("./routes/registerRoutes");
 
 const app = express();
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json()); // Add this to parse JSON requests
 
-// Use routes
-app.use(newsRoutes);
-app.use(topHeadlinesRoutes);
-app.use(countryRoutes);
+// Use combined routes
+app.use("/api", routes);
+app.use("/api/auth/login", loginRoutes);
+app.use("/api/auth/register", registerRoutes); // Ensure this line is present and correct
 
 module.exports = app;
