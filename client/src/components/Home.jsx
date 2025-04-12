@@ -1,6 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import axios from "axios";
+import Card from "./Card"; // Import the Card component
+import "../styles/Card.css"; // Import the Card styles
 
 function Home() {
   const { isAuthenticated } = useContext(AuthContext);
@@ -9,7 +11,7 @@ function Home() {
   useEffect(() => {
     if (isAuthenticated) {
       axios
-        .get("/api/all-news")
+        .get("http://localhost:5000/api/all-news")
         .then((response) => setNews(response.data.data.articles))
         .catch((error) => console.error("Error fetching news:", error));
     }
@@ -19,24 +21,22 @@ function Home() {
     <div className="home-container">
       {isAuthenticated ? (
         <>
-          <h1>All News</h1>
-          <div className="news-container">
+          <div className="card-container">
             {news.length > 0 ? (
               news.map((article, index) => (
-                <div key={index} className="news-article">
-                  <h2>{article.title}</h2>
-                  <p>{article.description}</p>
-                  <a
-                    href={article.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Read more
-                  </a>
-                </div>
+                <Card
+                  key={index}
+                  title={article.title}
+                  description={article.description}
+                  imageUrl={article.urlToImage}
+                  link={article.url}
+                />
               ))
             ) : (
-              <p>Loading news...</p>
+              <>
+                <h1>All News</h1>
+                <p>Loading news...</p>
+              </>
             )}
           </div>
         </>
