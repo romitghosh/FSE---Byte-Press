@@ -1,53 +1,57 @@
-// filepath: c:\Users\Romit\University Work\FSE - Byte Press\client\src\components\Register.jsx
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import "./auth.css";
 
-function Register() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+function Signup() {
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/auth/register", {
-        name,
-        email,
+      const response = await axios.post("http://localhost:5000/auth/signup", {
+        username,
         password,
       });
-      alert("Registration successful! Please log in.");
-      navigate("/login");
+      if (response.data.success) {
+        alert("Signup successful! Redirecting to login...");
+        navigate("/login");
+      } else {
+        alert(response.data.message || "Signup failed. Please try again.");
+      }
     } catch (error) {
-      alert(error.response?.data?.message || "Registration failed");
+      console.error("Signup error:", error);
+      alert("An error occurred during signup. Please try again later.");
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Register</h2>
-      <input
-        type="text"
-        placeholder="Name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button type="submit">Register</button>
-    </form>
+    <div className="auth-container">
+      <form onSubmit={handleSignup} className="auth-form">
+        <h2>Register</h2>
+        <input
+          type="text"
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          required
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <button type="submit">Signup</button>
+        <p>
+          Already have an account? <a href="/login">Login</a>
+        </p>
+      </form>
+    </div>
   );
 }
 
-export default Register;
+export default Signup;

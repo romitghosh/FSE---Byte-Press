@@ -7,7 +7,13 @@ const loginRoutes = require("./routes/loginRoutes");
 const registerRoutes = require("./routes/registerRoutes");
 
 const app = express();
-app.use(cors());
+
+const corsOptions = {
+  origin: "http://localhost:5173", // Frontend URL
+  credentials: true,
+};
+app.use(cors(corsOptions));
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json()); // Add this to parse JSON requests
 
