@@ -22,7 +22,7 @@ function TopHeadlines() {
       .get(`http://localhost:5000/api/top-headlines?category=${category}`)
       .then((response) => {
         if (response.data.success) {
-          setHeadlines(response.data.data.articles || []);
+          setHeadlines(response.data.data.articles.slice(0, 4)); // Limit to 4 cards
         }
       })
       .catch((error) => {

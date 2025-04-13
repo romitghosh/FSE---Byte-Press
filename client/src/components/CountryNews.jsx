@@ -10,7 +10,9 @@ function CountryNews() {
   useEffect(() => {
     axios
       .get(`http://localhost:5000/api/country/${country}`)
-      .then((response) => setCountryNews(response.data.data.articles || []))
+      .then((response) =>
+        setCountryNews(response.data.data.articles.slice(0, 4))
+      ) // Limit to 4 cards
       .catch((error) => console.error("Error fetching country news:", error));
   }, [country]);
 

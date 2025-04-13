@@ -3,6 +3,8 @@ import { AuthContext } from "../context/AuthContext";
 import axios from "axios";
 import Card from "./Card"; // Import the Card component
 import "../styles/Card.css"; // Import the Card styles
+import "../styles/Home.css"; // Import the Home styles
+import model from "../assets/model.png";
 
 function Home() {
   const { isAuthenticated } = useContext(AuthContext);
@@ -42,8 +44,29 @@ function Home() {
         </>
       ) : (
         <>
-          <h1>Welcome to Byte Press</h1>
-          <p>Your personalized news aggregator.</p>
+          <div className="home">
+            <div className="desc">
+              <h1>Welcome to Byte Press</h1>
+              <p>
+                🤖 "News aggregation done right. Minimal, meaningful, and
+                machine-driven."<br></br>
+                🧠 "Byte Press - Where every byte counts, and every headline
+                matters."<br></br>⚡ "Lightning-fast news. Curated by code.
+                Powered by purpose."<br></br>
+                🔍 "From chaos to clarity — your smart news companion."<br></br>
+                🌐 "All the news you need, in one byte-sized feed."
+                <br></br>
+              </p>
+            </div>
+            <div className="model">
+              <img
+                src={model}
+                alt="Model"
+                height="550"
+                className="model-image"
+              />
+            </div>
+          </div>
         </>
       )}
     </div>

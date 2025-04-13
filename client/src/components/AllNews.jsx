@@ -9,7 +9,7 @@ function AllNews() {
   useEffect(() => {
     axios
       .get("http://localhost:5000/api/all-news")
-      .then((response) => setNews(response.data.data.articles || []))
+      .then((response) => setNews(response.data.data.articles.slice(0, 4))) // Limit to 4 cards
       .catch((error) => console.error("Error fetching all news:", error));
   }, []);
 

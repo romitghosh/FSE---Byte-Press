@@ -8,7 +8,6 @@ const registerUser = async (req, res) => {
   try {
     const existingUser = await user.findOne({ email });
     if (existingUser) {
-      console.log("User already exists:", email); // Debug log
       return res.status(400).json({ message: "User already exists" });
     }
 
@@ -25,7 +24,6 @@ const registerUser = async (req, res) => {
 
     res.status(201).json({ message: "User registered successfully", token });
   } catch (error) {
-    console.error("Register error:", error); // Debug log
     res
       .status(500)
       .json({ message: "Internal server error", error: error.message });

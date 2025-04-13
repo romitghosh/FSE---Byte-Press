@@ -1,35 +1,71 @@
-#root {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+body {
+  margin: 0;
+  font-family: "Zilla Slab", serif;
+  background-color: #000;
+  color: #fff;
+  overflow-x: hidden;
+  padding-top: 60px; /* Prevent content from going under the navbar */
+  line-height: 1.6; /* Improve readability */
 }
 
-.home-container {
-  padding: 20px;
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
 }
 
-nav {
-  background-color: #007bff;
-  color: white;
-  padding: 10px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+a:hover {
+  color: #ccc;
 }
 
-nav a {
-  color: white;
-  margin: 0 10px;
-}
-
-nav button {
-  background-color: #ff4d4d;
-  color: white;
-  border: none;
-  padding: 5px 10px;
+button {
+  background-color: #000;
+  color: #fff;
+  border: 1px solid #fff;
+  padding: 0.5rem 1rem;
   cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 5px; /* Smooth corners for buttons */
 }
 
-nav button:hover {
-  background-color: #ff1a1a;
+button:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.container {
+  padding: 1rem;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem; /* Increase spacing between cards */
+  padding: 1rem;
+}
+
+.card {
+  border-radius: 10px; /* Smooth corners */
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for better design */
+}
+
+.nav-links {
+  gap: 1.5rem; /* Increase spacing between navbar links */
+}
+
+.category-selector {
+  margin: 1rem 0; /* Add spacing around category selector */
+  text-align: center; /* Center align the selector */
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 0.9rem;
+  }
 }

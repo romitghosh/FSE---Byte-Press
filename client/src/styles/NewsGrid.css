@@ -1,47 +1,20 @@
-.news-grid,
-.card-container {
+.news-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
-  padding: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
 }
 
-.news-card {
-  background: white;
-  border: 1px solid #ddd;
+.news-grid-item {
+  background-color: #000;
+  color: #fff;
+  border: 1px solid #fff;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.news-card:hover {
-  transform: scale(1.02);
-}
-
-.news-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-.news-card h2 {
-  font-size: 1.2rem;
-  margin: 10px;
-}
-
-.news-card p {
-  margin: 10px;
-  color: #555;
-}
-
-.news-card a {
-  display: block;
-  margin: 10px;
-  color: #007bff;
-  text-decoration: none;
-}
-
-.news-card a:hover {
-  text-decoration: underline;
+.news-grid-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
 }

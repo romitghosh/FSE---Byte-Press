@@ -1,11 +1,12 @@
 import { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
+import "../styles/Auth.css"; // Import the new styles
 
 function Auth() {
   const { login } = useContext(AuthContext);
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(true);
   const [formData, setFormData] = useState({
     name: "",
@@ -29,13 +30,12 @@ function Auth() {
       : "http://localhost:5000/api/auth/register";
     try {
       const response = await axios.post(url, formData);
-      alert(response.data.message);
       if (response.data.token) {
-        login(response.data.token); // Pass token to login function
-        navigate("/"); // Redirect to home page
+        login(response.data.token);
+        navigate("/");
       }
     } catch (error) {
-      alert(error.response?.data?.message || "An error occurred");
+      console.error(error.response?.data?.message || "An error occurred");
     }
   };
 
@@ -71,7 +71,7 @@ function Auth() {
         />
         <button type="submit">{isLogin ? "Login" : "Register"}</button>
       </form>
-      <button onClick={toggleMode}>
+      <button className="toggle-button" onClick={toggleMode}>
         {isLogin ? "Switch to Register" : "Switch to Login"}
       </button>
     </div>

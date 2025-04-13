@@ -1,44 +1,69 @@
 nav {
-  background-color: #007bff;
-  color: white;
-  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px; /* Increase navbar height */
+  background-color: #000;
+  color: #fff;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 1.5rem; /* Add more padding */
+  z-index: 1000;
+  border-bottom: 1px solid #fff;
 }
 
-nav div {
+.logo-container {
   display: flex;
   align-items: center;
 }
 
-nav img {
-  margin-right: 10px;
+.logo-container img {
+  height: 40px;
+  margin-right: 0.5rem;
 }
 
-nav h1 {
-  margin: 0;
-  font-size: 1.5rem;
-}
-
-nav a {
-  color: white;
-  margin: 0 10px;
-  text-decoration: none;
-}
-
-nav a:hover {
-  text-decoration: underline;
-}
-
-nav button {
-  background-color: #ff4d4d;
-  color: white;
+.menu-button {
+  display: none;
+  background: none;
   border: none;
-  padding: 5px 10px;
+  color: #fff;
+  font-size: 2rem; /* Increase menu button size */
   cursor: pointer;
 }
 
-nav button:hover {
-  background-color: #ff1a1a;
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  align-items: center; /* Center align links vertically */
+}
+
+.nav-links a {
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #ccc;
+}
+
+@media (max-width: 768px) {
+  .menu-button {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: #000;
+    width: 100%;
+    padding: 1rem;
+    border-top: 1px solid #fff;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
 }
