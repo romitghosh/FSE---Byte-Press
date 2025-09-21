@@ -1,74 +1,87 @@
-import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../context/AuthContext";
-import axios from "axios";
-import Card from "./Card"; // Import the Card component
 import "../styles/Card.css"; // Import the Card styles
 import "../styles/Home.css"; // Import the Home styles
 import model from "../assets/model.png";
 
 function Home() {
-  const { isAuthenticated } = useContext(AuthContext);
-  const [news, setNews] = useState([]);
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      axios
-        .get("http://localhost:5000/api/all-news")
-        .then((response) => setNews(response.data.data.articles))
-        .catch((error) => console.error("Error fetching news:", error));
-    }
-  }, [isAuthenticated]);
-
   return (
-    <div className="home-container">
-      {isAuthenticated ? (
-        <>
-          <div className="card-container">
-            {news.length > 0 ? (
-              news.map((article, index) => (
-                <Card
-                  key={index}
-                  title={article.title}
-                  description={article.description}
-                  imageUrl={article.urlToImage}
-                  link={article.url}
-                />
-              ))
-            ) : (
-              <>
-                <h1>All News</h1>
-                <p>Loading news...</p>
-              </>
-            )}
+    <div className="home-landing-container">
+      <nav className="home-nav-placeholder" />
+      <section className="welcome-section">
+        <div className="welcome-left">
+          <h1 className="welcome-title">Welcome to</h1>
+          <h1 className="bytepress-title">
+            BYTE <span>Press</span>
+          </h1>
+          <p className="welcome-desc">
+            News aggregation done right. Minimal, meaningful, and
+            machine-driven.
+            <br />
+            Byte Press – Where every byte counts, and every headline matters.
+            <br />
+            Lightning-fast news. Curated by code. Powered by purpose.
+            <br />
+            From chaos to clarity — your smart news companion.
+            <br />
+            All the news you need, in one byte-sized feed.
+          </p>
+          <div className="made-by">
+            Made by <span className="author-btn">Romit</span>{" "}
+            <span className="author-btn">Rohit</span>{" "}
+            <span className="author-btn">Pulkit</span>{" "}
+            <span className="author-btn">Rajveer</span>
           </div>
-        </>
-      ) : (
-        <>
-          <div className="home">
-            <div className="desc">
-              <h1>Welcome to Byte Press</h1>
-              <p>
-                🤖 "News aggregation done right. Minimal, meaningful, and
-                machine-driven."<br></br>
-                🧠 "Byte Press - Where every byte counts, and every headline
-                matters."<br></br>⚡ "Lightning-fast news. Curated by code.
-                Powered by purpose."<br></br>
-                🔍 "From chaos to clarity — your smart news companion."<br></br>
-                🌐 "All the news you need, in one byte-sized feed."
-                <br></br>
-              </p>
-            </div>
-            <div className="model">
-              <img
-                src={model}
-                alt="Model"
-                height="550"
-                className="model-image"
-              />
-            </div>
-          </div>
-        </>
-      )}
+          <div className="welcome-quote">"Get the News, Anywhere, Anytime"</div>
+        </div>
+        <div className="welcome-right">
+          <img src={model} alt="Model" className="welcome-img" />
+        </div>
+      </section>
+
+      <section className="features-section">
+        <div className="feature-card">
+          <img
+            src="/src/assets/Logo.png"
+            alt="Exciting News"
+            className="feature-img"
+          />
+          <div className="feature-title">Get Exciting News!</div>
+        </div>
+        <div className="feature-card">
+          <img
+            src="https://img.icons8.com/ios-filled/100/6c63ff/service.png"
+            alt="24/7 News"
+            className="feature-img"
+          />
+          <div className="feature-title">24/7 News!</div>
+        </div>
+        <div className="feature-card">
+          <img
+            src="https://img.icons8.com/ios-filled/100/6c63ff/globe--v1.png"
+            alt="Around the World"
+            className="feature-img"
+          />
+          <div className="feature-title">Around the World!</div>
+        </div>
+      </section>
+
+      <section className="info-section">
+        <div className="info-box">
+          <p>
+            <b>
+              We collect news from a variety of websites, blogs, and other
+              sources.
+            </b>
+          </p>
+          <p>
+            Content is organized into categories like politics, sports,
+            technology, or entertainment.
+          </p>
+          <p>
+            We offer personalized news feeds based on user interests and
+            preferences.
+          </p>
+        </div>
+      </section>
     </div>
   );
 }

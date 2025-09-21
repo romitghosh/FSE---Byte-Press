@@ -1,6 +1,9 @@
 .container {
   padding: 2rem;
-  color: #fff;
+  color: #111;
+  background: #fff;
+  border-radius: 1.5rem;
+  box-shadow: 0 2px 16px 0 #e3e3e3;
 }
 
 .top {
@@ -29,11 +32,12 @@
 }
 
 .team-member {
-  background-color: #000;
-  border: 1px solid #fff;
-  border-radius: 8px;
+  background-color: #f8faff;
+  border: 1.5px solid #bdbdbd;
+  border-radius: 12px;
   padding: 1rem;
   text-align: center;
+  color: #111;
 }
 
 .team-member h3 {

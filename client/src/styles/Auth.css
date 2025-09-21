@@ -1,51 +1,66 @@
 .auth-container {
   max-width: 400px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background-color: #000;
-  color: #fff;
-  border: 1px solid #fff;
-  border-radius: 8px;
+  margin: 2.5rem auto 1.5rem auto;
+  padding: 2.2rem 2rem 2rem 2rem;
+  background: #fff;
+  color: #111;
+  border: 2px solid #e6edff;
+  border-radius: 1.5rem;
   text-align: center;
+  box-shadow: 0 2px 16px 0 #e3e3e3;
 }
 
 .auth-container h1 {
   margin-bottom: 1.5rem;
+  color: #222;
+  font-size: 2rem;
+  font-weight: 900;
 }
 
 .auth-container form {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.1rem;
 }
 
 .auth-container input {
-  padding: 0.5rem;
-  border: 1px solid #fff;
-  border-radius: 5px;
-  background-color: #000;
-  color: #fff;
+  padding: 0.7rem 1rem;
+  border: 1.5px solid #bdbdbd;
+  border-radius: 8px;
+  background-color: #f8faff;
+  color: #111;
+  font-size: 1rem;
+  transition: border 0.2s;
+}
+.auth-container input:focus {
+  border: 1.5px solid #6c63ff;
+  outline: none;
 }
 
-.auth-container button {
-  padding: 0.5rem;
+.auth-container button[type="submit"] {
+  padding: 0.7rem 1.2rem;
   border: none;
-  border-radius: 5px;
-  background-color: #fff;
-  color: #000;
+  border-radius: 8px;
+  background-color: #6c63ff;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.08rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background 0.2s, color 0.2s;
+  margin-top: 0.5rem;
 }
-
-.auth-container button:hover {
-  background-color: #ccc;
+.auth-container button[type="submit"]:hover {
+  background-color: #5548c8;
+  color: #fff;
 }
 
 .toggle-button {
-  margin-top: 1rem;
+  margin-top: 1.2rem;
   background: none;
   border: none;
-  color: #fff;
+  color: #6c63ff;
   cursor: pointer;
   text-decoration: underline;
+  font-weight: 600;
+  font-size: 1rem;
 }

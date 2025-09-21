@@ -7,6 +7,7 @@ import ContactUs from "./components/ContactUs";
 import AllNews from "./components/AllNews";
 import TopHeadlines from "./components/TopHeadlines";
 import CountryNews from "./components/CountryNews";
+import Footer from "./components/Footer";
 import "./App.css";
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route path="/top-headlines" element={<TopHeadlines />} />
         <Route path="/country-news" element={<CountryNews />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }

@@ -22,7 +22,7 @@ function TopHeadlines() {
       .get(`http://localhost:5000/api/top-headlines?category=${category}`)
       .then((response) => {
         if (response.data.success) {
-          setHeadlines(response.data.data.articles.slice(0, 4)); // Limit to 4 cards
+          setHeadlines(response.data.data.articles); // Show all articles
         }
       })
       .catch((error) => {
@@ -33,9 +33,10 @@ function TopHeadlines() {
   return (
     <div>
       <div className="category-selector">
-        <label htmlFor="category">Select Category: </label>
+        <label htmlFor="category" className="category-label">Select Category: </label>
         <select
           id="category"
+          className="category-dropdown"
           value={category}
           onChange={(e) => setCategory(e.target.value)}
         >

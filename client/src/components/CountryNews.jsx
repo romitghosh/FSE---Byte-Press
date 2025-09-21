@@ -10,18 +10,17 @@ function CountryNews() {
   useEffect(() => {
     axios
       .get(`http://localhost:5000/api/country/${country}`)
-      .then((response) =>
-        setCountryNews(response.data.data.articles.slice(0, 4))
-      ) // Limit to 4 cards
+      .then((response) => setCountryNews(response.data.data.articles)) // Show all articles
       .catch((error) => console.error("Error fetching country news:", error));
   }, [country]);
 
   return (
     <div>
       <div className="category-selector">
-        <label htmlFor="country">Select Country: </label>
+        <label htmlFor="country" className="category-label">Select Country: </label>
         <select
           id="country"
+          className="category-dropdown"
           value={country}
           onChange={(e) => setCountry(e.target.value)}
         >

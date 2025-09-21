@@ -6,12 +6,14 @@ import "../styles/Navbar.css";
 function Navbar() {
   const { isAuthenticated, logout } = useContext(AuthContext);
   const [menuActive, setMenuActive] = useState(false);
+  const currentPath = window.location.pathname;
 
   return (
-    <nav>
+    <nav className="navbar-custom">
       <div className="logo-container">
-        <img src="/src/assets/Logo.png" alt="Byte Press Logo" height="60" />
-        <h1>Byte Press</h1>
+        <span className="logo-title">
+          BYTE <span className="logo-title-press">Press</span>
+        </span>
       </div>
       <button
         className="menu-button"
@@ -27,14 +29,23 @@ function Navbar() {
             <Link to="/country-news">Country News</Link>
             <Link to="/about-us">About Us</Link>
             <Link to="/contact-us">Contact Us</Link>
-            <button onClick={logout}>Logout</button>
+            <button className="nav-btn" onClick={logout}>
+              Logout
+            </button>
           </>
         ) : (
           <>
-            <Link to="/">Home</Link>
+            <Link
+              to="/"
+              className={currentPath === "/" ? "nav-link-active" : ""}
+            >
+              Home
+            </Link>
             <Link to="/about-us">About Us</Link>
             <Link to="/contact-us">Contact Us</Link>
-            <Link to="/auth">Login/Register</Link>
+            <Link to="/auth" className="nav-btn">
+              Login/Register
+            </Link>
           </>
         )}
       </div>
