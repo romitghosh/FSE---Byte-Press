@@ -30,10 +30,10 @@ function Home() {
             <span className="author-btn">Pulkit</span>{" "}
             <span className="author-btn">Rajveer</span>
           </div>
-          <div className="welcome-quote">"Get the News, Anywhere, Anytime"</div>
         </div>
         <div className="welcome-right">
           <img src={model} alt="Model" className="welcome-img" />
+          <div className="welcome-quote">"Get the News, Anywhere, Anytime"</div>
         </div>
       </section>
 
