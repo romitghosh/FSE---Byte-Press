@@ -1,12 +1,17 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/Navbar.css";
 
 function Navbar() {
   const { isAuthenticated, logout } = useContext(AuthContext);
   const [menuActive, setMenuActive] = useState(false);
   const currentPath = window.location.pathname;
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    logout();
+    navigate("/");
+  }
 
   return (
     <nav className="navbar-custom">
@@ -29,7 +34,7 @@ function Navbar() {
             <Link to="/country-news">Country News</Link>
             <Link to="/about-us">About Us</Link>
             <Link to="/contact-us">Contact Us</Link>
-            <button className="nav-btn" onClick={logout}>
+            <button className="nav-btn" onClick={handleLogout}>
               Logout
             </button>
           </>

@@ -32,7 +32,7 @@ function Auth() {
       const response = await axios.post(url, formData);
       if (response.data.token) {
         login(response.data.token);
-        navigate("/");
+        navigate("/all-news");
       }
     } catch (error) {
       console.error(error.response?.data?.message || "An error occurred");
